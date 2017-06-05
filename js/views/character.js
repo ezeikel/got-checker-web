@@ -1,14 +1,14 @@
 define([
   'jquery',
+  'handlebars',
   'underscore',
   'backbone'
-], function($, _, Backbone) {
+], function($, Handlebars, _, Backbone) {
   var CharacterView = Backbone.View.extend({
+    template: Handlebars.compile($('#characterTemplate').html()),
     render: function() {
-      var template = _.template($('#characterTemplate').html());
-      var html = template(this.model.toJSON());
-      this.$el.html(html);
-
+      this.$el.html(this.template(this.model.toJSON()));
+      
       return this;
     }
   });

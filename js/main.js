@@ -3,6 +3,7 @@
 require.config({
   paths: {
     jquery: './lib/jquery.min',
+    handlebars: './lib/handlebars.min',
     underscore: './lib/underscore.min',
     backbone: './lib/backbone.min'
   }
