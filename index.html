@@ -5,14 +5,18 @@
     <title>Document</title>
   </head>
   <body>
-    <nav id="nav">
+    <!-- <nav id="nav">
       <ul>
         <li data-url="characters">Characters</li>
         <li data-url="houses">Houses</li>
       </ul>
-    </nav>
+    </nav> -->
     <div id="container">
     </div>
-    <script src="js/lib/require.min.js" data-main="js/main"></script>
+    <script src="js/lib/require.min.js" data-main="./js/main"></script>
+    <script id="characterTemplate" type="text/html">
+      <h1>Characters</h1>
+      <h3><%= name %></h3>
+    </script>
   </body>
 </html>

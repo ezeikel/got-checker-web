@@ -1,11 +1,17 @@
+'use strict';
+
 require.config({
   paths: {
-    jquery: 'lib/jquery.min',
-    underscore: 'lib/underscore.min',
-    backbone: 'lib/backbone.min'
+    jquery: './lib/jquery.min',
+    underscore: './lib/underscore.min',
+    backbone: './lib/backbone.min'
   }
 });
 
-define(['app'], function(App) {
-  App.initialize();
+require([
+  // Load our app module and pass it to our definition function
+  'app',
+], function(App) {
+  // The "app" dependency is pass in as "App"
+  App.initialize()
 });
