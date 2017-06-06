@@ -10,6 +10,5 @@ define([
       return this;
     }
   });
-  // Returning instantiated views can be quite useful for having "state"
   return BlankView;
 });

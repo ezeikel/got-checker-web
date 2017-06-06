@@ -1,4 +1,5 @@
-// Filename: models/project
+// http://berzniz.com/post/24743062344/handling-handlebarsjs-like-a-pro
+
 define([
   'underscore',
   'backbone'
@@ -8,6 +9,5 @@ define([
       name: "Harry Potter"
     }
   });
-  // Return the model for the module
   return CharacterModel;
 });

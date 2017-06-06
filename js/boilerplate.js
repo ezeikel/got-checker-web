@@ -1,11 +1,9 @@
-//Filename: boilerplate.js
-
 define([
-  // These are path alias that we configured in our bootstrap
-  'jquery',     // lib/jquery/jquery
-  'underscore', // lib/underscore/underscore
-  'backbone'    // lib/backbone/backbone
-], function($, _, Backbone){
+  'jquery',
+  'underscore',
+  'handlebars',
+  'backbone'
+], function ($, _, Handlebars, Backbone) {
   // Above we have passed in jQuery, Underscore and Backbone
   // They will not be accessible in the global scope
   return {};
