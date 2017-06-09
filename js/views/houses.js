@@ -18,6 +18,9 @@ define([
         // Fetch the collection and call render() method
         var that = this;
         this.collection.fetch({
+          data: {
+            pageSize: 50
+          },
           success: function (collection, response, options) {
             that.render();
           },
@@ -26,9 +29,11 @@ define([
           }
         });
       },
+      tagName: 'section',
       template: Handlebars.getTemplate('houses'),
       render: function() {
         this.$el.html(this.template({ houses : this.collection.toJSON() }));
+        //debugger;
         return this;
       }
     });
