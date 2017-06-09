@@ -6,12 +6,26 @@ define([
   'models/character',
   'views/navigation',
   'views/house',
+  'views/houses',
   'views/character'
-], function($, _, Backbone, CharacterModel, NavigationView, HouseView, CharacterView) {
+], function($, _, Backbone, Character, NavigationView, HouseView, HousesView, CharacterView) {
 
   var Router = Backbone.Router.extend({
     initialize: function() {
       console.info('init property being called...');
+
+      // TODO: Move this somewhere else
+      // Overwrite the sync method to pass over the Same Origin Policy
+      Backbone._sync = Backbone.sync;
+      // override original sync method to
+      Backbone.sync = function(method, model, options) {
+        options || (options = {});
+        if (!options.crossDomain) {
+          options.crossDomain = true;
+        }
+        return Backbone._sync(method, model, options);
+      };
+
     },
     routes: {
       'houses': 'viewHouse',
@@ -27,13 +41,13 @@ define([
 
     router.on('route:viewHouse', function() {
       // Call render on the module we loaded in via the dependency array
-      var view = new HouseView({ el: '#container'});
+      var view = new HousesView({ el: '#container'});
       view.render();
     });
 
     router.on('route:viewCharacter', function() {
       // Call render on the module we loaded in via the dependency array
-      var character = new CharacterModel({ name: 'Mo Money' });
+      var character = new Character({ name: 'Mo Money' });
       var view = new CharacterView({ el: '#container', model: character});
       view.render();
     });
@@ -42,7 +56,7 @@ define([
       // We have no matching route, lets just log what the URL was
       console.log('No route could be found for ', actions);
     });
-    
+
     // This is so that router.naviate can be shared to all views that are created
     Backbone.View.prototype.goTo = function (loc) {
       router.navigate(loc, true);

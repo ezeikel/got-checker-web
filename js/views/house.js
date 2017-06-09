@@ -1,14 +1,14 @@
 define([
   'jquery',
   'underscore',
-  'backbone'
-], function($, _, Backbone) {
-  var BlankView = Backbone.View.extend({
-    render: function() {
-      this.$el.html('house VIEW');
+  'backbone'], function($, _, Backbone) {
 
-      return this;
-    }
-  });
-  return BlankView;
+    var HouseView = Backbone.View.extend({
+      tagName: 'li',
+      render: function () {
+        return this;
+      }
+    });
+
+    return HouseView;
 });
