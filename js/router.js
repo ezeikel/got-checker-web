@@ -5,10 +5,11 @@ define([
   'backbone',
   'models/character',
   'views/navigation',
+  'views/intro',
   'views/house',
   'views/houses',
   'views/character'
-], function($, _, Backbone, Character, NavigationView, HouseView, HousesView, CharacterView) {
+], function($, _, Backbone, Character, NavigationView, IntroView, HouseView, HousesView, CharacterView) {
 
   var Router = Backbone.Router.extend({
     initialize: function() {
@@ -28,6 +29,7 @@ define([
 
     },
     routes: {
+      '': 'viewHome',
       'houses': 'viewHouse',
       'characters': 'viewCharacter',
       '*other': 'defaultRoute'
@@ -38,6 +40,11 @@ define([
     console.log('Initialize router..');
 
     var router = new Router;
+
+    router.on('route:viewHome', function() {
+      var view = new IntroView({el: '#container'});
+      view.render();
+    });
 
     router.on('route:viewHouse', function() {
       // Call render on the module we loaded in via the dependency array
